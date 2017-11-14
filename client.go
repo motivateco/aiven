@@ -14,11 +14,12 @@ type Client struct {
 	ApiKey string
 	Client *http.Client
 
-	Projects     *ProjectsHandler
-	Services     *ServicesHandler
-	Databases    *DatabasesHandler
-	ServiceUsers *ServiceUsersHandler
-	Billing      *BillingHandler
+	Projects      *ProjectsHandler
+	Services      *ServicesHandler
+	Databases     *DatabasesHandler
+	ServiceUsers  *ServiceUsersHandler
+	ServiceTopics *ServiceTopicsHandler
+	Billing       *BillingHandler
 }
 
 // NewMFAUserClient creates a new client based on email, one-time password and password.
@@ -53,6 +54,7 @@ func (c *Client) Init() {
 	c.Services = &ServicesHandler{c}
 	c.Databases = &DatabasesHandler{c}
 	c.ServiceUsers = &ServiceUsersHandler{c}
+	c.ServiceTopics = &ServiceTopicsHandler{c}
 	c.Billing = &BillingHandler{c, &CardsHandler{c}}
 }
 
